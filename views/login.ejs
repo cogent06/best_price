@@ -3,6 +3,7 @@
 <html>
 <body>
 <%- include('header'); %>
+
     <!--================Home Banner Area =================-->
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
@@ -37,16 +38,20 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>Welcome Back ! <br>
+                            <h3><% if(messages.error){ %><!-- flash for msg and passport for error -->
+                                <center><%= messages.error   %><br><br><br></center>
+                                <% } else{ %>
+                            Welcome Back ! <br>
                                 Please Sign in now</h3>
-                            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                                <% } %>
+                            <form class="row contact_form" action="/login" method="post" novalidate="novalidate">
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="name" value=""
-                                        placeholder="Username">
+                                    <input type="email" class="form-control" id="email" name="email" value=""
+                                        placeholder="Email_Id" required>
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="password" class="form-control" id="password" name="password" value=""
-                                        placeholder="Password">
+                                        placeholder="Password" required>
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
@@ -67,6 +72,7 @@
     </section>
     <!--================login_part end =================-->
 
+   
     <!-- subscribe_area part start-->
     <section class="instagram_photo">
         <div class="container-fluid">
