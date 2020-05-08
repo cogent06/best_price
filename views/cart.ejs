@@ -1,6 +1,10 @@
 
 <!Doctype html>
+
 <html>
+  <head>
+    <script src="js/new_Jquery.js"></script>
+  </head>
 <body>
 <%- include('header'); %>
   <!-- breadcrumb start-->
@@ -27,14 +31,16 @@
           <table class="table">
             <thead>
               <tr>
+                
                 <th scope="col">Product</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Total</th>
+                <th scope="col">Update</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="abc">  
                 <td>
                   <div class="media">
                     <div class="d-flex">
@@ -46,28 +52,50 @@
                   </div>
                 </td>
                 <td>
-                  <h5>$360.00</h5>
+                  <h5>360.00</h5>
                 </td>
                 <td>
                   <!--Edited-->
                   <div class="input-group mb-3" style="max-width: 120px;">
                         <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                          <button class="btn btn-outline-primary js-btn-minus" type="button" id="minus" onclick="minus()">&minus;</button>
                         </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input type="text" class="form-control text-center" value="1" aria-label="Example text with button addon" aria-describedby="button-addon1" id="quantity">
                         <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                <button class="btn btn-outline-primary js-btn-plus" type="button" id="plus" onclick="add()">
+                    &plus;</button>
                         </div>
                       </div>
-                      <!--/Edited-->
+                  <!--/Edited-->
                 </td>
                 <td>
-                  <h5>$720.00</h5>
+                 <div id="tot">360</div>
+                </td>
+                <td >
+                  <button name="del" id="del">Delete</button>
                 </td>
               </tr>
+<!--For sum-->
+<script>
+var a=360;
+function add() { 
+    var y=Number(document.getElementById('quantity').value);    
+    y++;
+    console.log(y);
+    a=360*y;
+    document.getElementById('tot').innerHTML = 360*y;               
+}
+function minus() { 
+    var q=Number(document.getElementById('quantity').value);        
+    q--;
+    console.log(q);
+    a=360*q;
+    document.getElementById('tot').innerHTML = 360*q;
+}
 
-
-              <tr>
+  </script>
+<!--/For sum-->
+              <tr class="def">
                 <td>
                   <div class="media">
                     <div class="d-flex">
@@ -79,28 +107,64 @@
                   </div>
                 </td>
                 <td>
-                  <h5>$360.00</h5>
+                  <h5>360.00</h5>
                 </td>
                 <td>
                   <!--Edited-->
                   <div class="input-group mb-3" style="max-width: 120px;">
                         <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                          <button class="btn btn-outline-primary js-btn-minus" type="button" id="minus" onclick="minus1()">&minus;</button>
                         </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input type="text" class="form-control text-center" value="1" aria-label="Example text with button addon" aria-describedby="button-addon1" id="quantity1">
                         <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                          <button class="btn btn-outline-primary js-btn-plus" type="button" id="add" onclick="add1()">&plus;</button>
                         </div>
                       </div>
                       <!--/Edited-->
                 </td>
                 <td>
-                  <h5>$720.00</h5>
+                  <h5 id="tot1">360</h5>
+                </td>
+                <td >
+                  <button name="del1" id="del1">Delete</button>
                 </td>
               </tr>
+              <!--For sum-->
+<script>
+var b=360;
+  function add1() { 
+      var y=Number(document.getElementById('quantity1').value);    
+      y++;
+      console.log(y);
+      b=360*y;
+      document.getElementById('tot1').innerHTML = 360*y;               
+  }
+  function minus1() { 
+      var q=Number(document.getElementById('quantity1').value);        
+      q--;
+      console.log(q);
+      b=360*q;
+      document.getElementById('tot1').innerHTML = 360*q;
+  }
+$(document).ready(function(){
+  $("#del").click(function(){
+    $(".abc").remove();
+    a=0;
+  });
+});
+
+$(document).ready(function(){
+  $("#del1").click(function(){
+    $(".def").remove();
+    b=0;
+  });
+});
+    </script>
+  <!--/For sum-->
+  
               <tr class="bottom_button">
                 <td>
-                  <a class="btn_1" href="#">Update Cart</a>
+                  <a class="btn_1" href="#" onclick="ftot()">Update Cart</a>
                 </td>
                 <td></td>
                 <td></td>
@@ -117,9 +181,18 @@
                   <h5>Subtotal</h5>
                 </td>
                 <td>
-                  <h5>$2160.00</h5>
+                  <div id="f_tot">9</div>
                 </td>
               </tr>
+              <!--Final Total-->
+<script>  
+function ftot() {
+  var c=a+b;
+  document.getElementById('f_tot').innerHTML = a+b;
+}
+
+</script>
+<!--Final Total ends-->
               <tr class="shipping_area">
                 <td></td>
                 <td></td>
@@ -130,35 +203,30 @@
                   <div class="shipping_box">
                     <ul class="list">
                       <li>
-                        Flat Rate: $5.00
-                        <input type="radio" aria-label="Radio button for following text input">
+                        Flat Rate: 5.00
+                        <input type="radio" aria-label="Radio button for following text input" name="shipping" id="flat_rate">
                       </li>
                       <li>
                         Free Shipping
-                        <input type="radio" aria-label="Radio button for following text input">
+                        <input type="radio" aria-label="Radio button for following text input" name="shipping" id="free_shipping">
                       </li>
                       <li>
-                        Flat Rate: $10.00
-                        <input type="radio" aria-label="Radio button for following text input">
+                        Flat Rate: 10.00
+                        <input type="radio" aria-label="Radio button for following text input" name="shipping" id="flat_rate2">
                       </li>
                       <li class="active">
-                        Local Delivery: $2.00
-                        <input type="radio" aria-label="Radio button for following text input">
+                        Local Delivery: 2.00
+                        <input type="radio" aria-label="Radio button for following text input" name="shipping" id="local_delivery">
                       </li>
                     </ul>
                     <h6>
                       Calculate Shipping
                       <i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </h6>
-                    <select class="shipping_select">
-                      <option value="1">Select Country</option>
-                      <option value="2">Select Country</option>
-                      <option value="4">Select Country</option>
-                    </select>
+                    </h6>                    
                     <select class="shipping_select section_bg">
-                      <option value="1">Select a State</option>
-                      <option value="2">Select a State</option>
-                      <option value="4">Select a State</option>
+                      <option value="1">Gujarat</option>
+                      <option value="2">Maharashtra</option>
+                      <option value="4">Goa</option>
                     </select>
                     <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
                     <a class="btn_1" href="#">Update Details</a>
@@ -169,7 +237,7 @@
           </table>
           <div class="checkout_btn_inner float-right">
             <a class="btn_1" href="#">Continue Shopping</a>
-            <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+            <a class="btn_1 checkout_btn_1" href="checkout">Proceed to checkout</a>
           </div>
         </div>
       </div>
@@ -177,44 +245,12 @@
   <!--================End Cart Area =================-->
 <!-- JS for incerement and decrement-->
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script> 
-  <script src="js/aos.js"></script>
-  <script src="js/main.js"></script>
-
 <!-- JS for incerement and decrement-->
   <!--::footer_part start::-->
   <%- include('footer'); %>
 
   <!--::footer_part end::-->
 
-  <!-- jquery plugins here-->
-  <script src="js/jquery-1.12.1.min.js"></script>
-  <!-- popper js -->
-  <script src="js/popper.min.js"></script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- easing js -->
-  <script src="js/jquery.magnific-popup.js"></script>
-  <!-- swiper js -->
-  <script src="js/swiper.min.js"></script>
-  <!-- swiper js -->
-  <script src="js/mixitup.min.js"></script>
-  <script src="js/price_rangs.js"></script>
-  <!-- particles js -->
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.nice-select.min.js"></script>
-  <!-- slick js -->
-  <script src="js/slick.min.js"></script>
-  <script src="js/jquery.counterup.min.js"></script>
-  <script src="js/waypoints.min.js"></script>
-  <script src="js/contact.js"></script>
-  <script src="js/jquery.ajaxchimp.min.js"></script>
-  <script src="js/jquery.form.js"></script>
-  <script src="js/jquery.validate.min.js"></script>
-  <script src="js/mail-script.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
 </body>
 
 </html>

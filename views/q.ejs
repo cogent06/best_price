@@ -1,0 +1,351 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Header +  body -->
+<%- include('../includes/customer/header'); %>
+
+<!--Nav bar files and option -->
+
+<%- include('../includes/customer/masterNavbar'); %>
+
+<%- include('../includes/customer/header-nav-below'); %>
+
+<div class="my-inner">
+
+</div>
+<style>
+    .my-inner {
+        background-size: cover;
+        margin-top: auto;
+        position: inherit;
+        height: 5em;
+    }
+</style>
+
+
+<!-- It's all about features-->
+<%- include('../includes/customer/head-body'); %>
+
+<!---->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="/products">Products</a>
+    </li>
+    <li class="breadcrumb-item active"> My Cart
+    </li>
+</ol>
+<!---->
+
+
+<form method="POST" action="/myCart">
+    <!-- <section class="ab-info-main py-5">
+        <div class="container py-3"> -->
+    <div class="container">
+        <h3 class="tittle text-center">Checkout Page</h3>
+
+        <% if(data.length !== 0) { %>
+
+        <div class="row contact-main-info mt-5">
+
+
+            <div class="alert alert-success center-block" role="alert">
+                <h4 class="alert-heading"> Product Delivery Information!</h4>
+                <strong><%= data[0].f_name + " " + data[0].l_name %>
+                </strong>
+                <hr>
+                <p>
+                    <strong>Address: </strong> <%= data[0].address + ", " + data[0].city + ", " + data[0].state + ", " + data[0].pincode %>
+                </p>
+                <p class="mb-0"><strong>Contact Number : </strong> <i><%= data[0].contact %></i></p>
+                <p class="text-danger"> Want to change Delivery information ? <a href="/setting">Update your profile</a>
+                </p>
+                <!--<p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>-->
+            </div>
+
+
+            <div class="col-md-12  contact-left-content">
+                <% if(vref == true){
+                %>
+                    <div class="alert alert-warning" style="text-align: center" role="alert">
+                        <strong>If Cost does not reflect than please refresh page !</strong>
+                    </div>
+                <%
+                } %>
+
+                <!--<form action="#" method="post">-->
+                <div class="row">
+
+                    <div class="col-md-12 order-md-1 mb-4">
+                        <br/>
+                        <% let amo = 0;
+                            var inde = [];
+                        for(let i = 0;i < data.length;i++) {
+                            let no = 1;
+                            var xyz = data[i];
+                        %>
+                        <div class="media">
+                            <div class="my-inner">
+                                <h3><%= (i + 1) %> </h3>
+                            </div>
+                            <p style="padding-right: 13px"></p>
+                            <!--<img src="/images/pro4.jpg" height="100px" width="100px" class="mr-3" alt="image">-->
+                            <% if(xyz.pro_img) {
+                            %>
+                                <img src="/productimages/<%= xyz.pro_img %>" height="100px" width="100px" class="mr-3"
+                                     alt="<%= data.product_name %>">
+                            <%
+                            }
+                            else {
+                            %>
+                                <img src="/productimages/No_image.png" height="100px" width="100px" class="mr-3"
+                                     alt="<%= data.product_name %>">
+                            <%
+                            }
+                            %>
+                            <div class="media-body">
+                                <h5 class="mt-0"><%= xyz.product_name %></h5>
+                                <p><%= xyz.description %></p>
+                            </div>
+                            <div class="my-inner">
+                                <button type="button" class=" mt-0 btn btn-secondary dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Quantity
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item <%= xyz.product_qty === 1 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=1" <%= data[i].current_qty < 1 ? 'hidden' : '' %>>1</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 2 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=2" <%= data[i].current_qty < 2 ? 'hidden' : '' %>>2</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 3 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=3" <%= data[i].current_qty < 3 ? 'hidden' : '' %>>3</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 4 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=4" <%= data[i].current_qty < 4 ? 'hidden' : '' %>>4</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 5 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=5" <%= data[i].current_qty < 5 ? 'hidden' : '' %>>5</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 6 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=6" <%= data[i].current_qty < 6 ? 'hidden' : '' %>>6</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 7 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=7" <%= data[i].current_qty < 7 ? 'hidden' : '' %>>7</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 8 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=8" <%= data[i].current_qty < 8 ? 'hidden' : '' %>>8</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 9 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=9" <%= data[i].current_qty < 9 ? 'hidden' : '' %>>9</a>
+                                    <a class="dropdown-item <%= xyz.product_qty === 10 ? 'active' : '' %>"
+                                       href="/myCart?pid=<%= xyz.product_id %>&value=10" <%= data[i].current_qty < 10 ? 'hidden' : '' %>>10</a>
+                                </div>
+
+                                <button name="remove" type="submit" value="<%= xyz.product_id %>"
+                                        class="btn btn-danger">
+                                    remove
+                                </button>
+                            </div>
+
+                            <div class="media-body col-md-2 right-col">
+                                <h5 class="mt-0">Cost : </h5>
+                                <p class="fa fa-rupee"> <%= (xyz.price * xyz.product_qty) %></p>
+                            </div>
+
+                        </div>
+
+                        <% amo = (amo + (xyz.price * xyz.product_qty)); %>
+
+                        <% var isTrue;
+                        if (xyz.product_qty > data[i].current_qty) {
+                            isTrue = true;
+                        %>
+                        <div class="alert alert-danger" role="alert">
+                            Sorry But this product don't have a sufficient available quantity.
+                            Total available quantity is : <%= data[i].current_qty %>
+                        </div>
+                        <!--<p class="mb-3 text-danger font-weight-bold"  id="cartAlt"></p>-->
+                        <%
+                        }
+                        else {
+                            isTrue = false;
+                        }
+                            var isSame;
+                            isSame = inde.includes(xyz.product_id);
+                        %>
+                        <div class="dropdown-divider"></div>
+                        <% inde.push(xyz.product_id); } inde = [] %>
+                    </div>
+
+
+                    <div class="col-md-12 order-md-1" id="cartBtn">
+                        <h4 class="mb-3">Total Amount to pay : <span
+                                    class="font-weight-bold fa fa-rupee fa-2x"> <%= amo %> </span></h4>
+                        <br/>
+                        <%
+                        if(isSame) { %>
+
+                            <div class="alert alert-danger" role="alert">
+                                Looks like you add same product multiple times. Please remove same product
+                            </div>
+                            <!--<h4 class="mb-3 text-danger font-weight-bold"></h4>-->
+
+                        <% }
+                        %>
+
+                        <br/>
+                        <!--<span class="sr-only"><input type="submit" class="btn btn-block btn-primary large" name="cart" value="<%= amo %>"></span>-->
+
+                        <!--<button type="submit" name="cart1" class="btn btn-block btn-primary large"> Process to Pay-->
+                        <!--<input type="submit" class="btn btn-block btn-primary large" name="cart" value="">-->
+                        <!--</button>-->
+                        <%
+                        if(isTrue || isSame) { %>
+                            <input type="submit" class="btn btn-block btn-primary large" name="cart" value="<%= amo %>"
+                                   disabled>
+                        <%
+                        } else { %>
+                            <input type="submit" class="btn btn-block btn-primary large" name="cart" value="<%= amo %>">
+                        <% }
+                        %>
+
+                    </div>
+                </div>
+            </div>
+            <% } else { %>
+                <br/>
+                <div class="row contact-main-info mt-5 ">
+                    <div class="row center-block">
+                        <div class="col-md-12 order-md-1 mb-4">
+                            <div class="label-info"></div>
+                            <h1 class=""><span class="label-info" style="border-radius: 5px">Your Cart is Empty!</span>
+                                <span> 😭 </span></h1>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            <% } %>
+        </div>
+    </div>
+    <!--</section> -->
+    <!--</div>-->
+</form>
+
+<!--/ab -->
+<form>
+    <section class="about py-5">
+        <div class="container pb-lg-3" id="popular-products">
+            <h3 class="tittle text-center">Popular Products</h3>
+            <div class="row">
+                <div class="col-md-6 latest-left">
+                    <div class="product-shoe-info shoe text-center col-9">
+                        <!--<img src="/images/img1.jpg" class="img-fluid" alt="">-->
+                        <% if(fet[0].image) {
+                        %>
+                            <img src="/productimages/<%= fet[0].image %>" style="width: 100%" ; height="100%"
+                                 class="img-fluid" alt="<%= fet[0].product_name %>">
+                        <%
+                        }
+                        else {
+                        %>
+                            <img src="/productimages/No_image.png" class="img-fluid" alt="<%= fet[0].product_name %>">
+                        <%
+                        }
+                        %>
+                        <div class="shop-now"><a href="/product/select-product?productno=<%= fet[0].product_id %>"
+                                                 class="btn"><%= fet[0].product_name %></a></div>
+                    </div>
+                    <br/>
+                    <div class="product-shoe-info shoe text-center col-8">
+                        <!--<img src="/images/img1.jpg" class="img-fluid" alt="">-->
+                        <% if(fet[1].image) {
+                        %>
+                            <img src="/productimages/<%= fet[1].image %>" class="img-fluid"
+                                 alt="<%= fet[1].product_name %>">
+                        <%
+                        }
+                        else {
+                        %>
+                            <img src="/productimages/No_image.png" class="img-fluid" alt="<%= fet[1].product_name %>">
+                        <%
+                        }
+                        %>
+                        <div class="shop-now"><a href="/product/select-product?productno=<%= fet[1].product_id %>"
+                                                 class="btn"><%= fet[1].product_name %></a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 latest-right">
+                    <div class="row latest-grids">
+                        <div class="latest-grid1 product-men col-8 ">
+                            <div class="product-shoe-info shoe text-center">
+                                <div class="men-thumb-item">
+                                    <% if(fet[2].image) {
+                                    %>
+                                        <img src="/productimages/<%= fet[2].image %>" class="img-fluid"
+                                             alt="<%= fet[2].product_name %>">
+                                    <%
+                                    }
+                                    else {
+                                    %>
+                                        <img src="/productimages/No_image.png" class="img-fluid"
+                                             alt="<%= fet[2].product_name %>">
+                                    <%
+                                    }
+                                    %>
+
+                                    <div class="shop-now"><a
+                                                href="/product/select-product?productno=<%= fet[2].product_id %>"
+                                                class="btn"><%= fet[2].product_name %></a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="latest-grid2 product-men col-10 " style="margin-top: 20px;">
+                            <div class="product-shoe-info shoe text-center">
+                                <div class="men-thumb-item">
+                                    <% if(fet[3].image) {
+                                    %>
+                                        <img src="/productimages/<%= fet[3].image %>" class="img-fluid"
+                                             alt="<%= fet[3].product_name %>">
+                                    <%
+                                    }
+                                    else {
+                                    %>
+                                        <img src="/productimages/No_image.png" class="img-fluid"
+                                             alt="<%= fet[3].product_name %>">
+                                    <%
+                                    }
+                                    %>
+                                    <div class="shop-now"><a
+                                                href="/product/select-product?productno=<%= fet[3].product_id %>"
+                                                class="btn"><%= fet[3].product_name %></a></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+<!-- //ab -->
+
+<!-- our 4 features-->
+<%- include('../includes/customer/brand') %>
+
+<!-- footer is here-->
+<%- include('../includes/customer/footer'); %>
+
+
+</html>

@@ -46,7 +46,7 @@ app.use("/js",express.static('js'));
 app.use("/sass",express.static('sass'));
 app.use("/webfonts",express.static('webfonts'));
 
-app.get("/index",function(req,res){
+app.get("/",function(req,res){
 	res.render("index.ejs" ,{name : 'Cogent'});
 });
 app.get("/about",function(req,res){

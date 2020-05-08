@@ -44,6 +44,6 @@ app.get("/header",function(req,res){
 app.get("/login",function(req,res){
 	res.render("login.ejs");
 });
-app.listen(3000,function(req,res){
+app.listen(5000,function(req,res){
 	console.log("Server running 5000");
 });//to create server
