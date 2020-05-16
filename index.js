@@ -1,16 +1,16 @@
-if(process.env.NODE_ENV !== 'production'){
+/*if(process.env.NODE_ENV !== 'production'){
 	require('dotenv').config()//will load all different environment variable and set them inside process.env
-}
+}*/
 
 const express=require("express");
-const session = require('express-session');
+//const session = require('express-session');
 const router = express.Router();
-const bodyParser = require("body-parser");
-const bcrypt = require('bcrypt');
-const flash = require('express-flash');
+//const bodyParser = require("body-parser");
+//const bcrypt = require('bcrypt');
+//const flash = require('express-flash');
 
 const app=express(); //class nd object
-const users = [];
+/*const users = [];
 
 const passport = require('passport');
 const initilizePassport = require('./passport-config');
@@ -18,16 +18,10 @@ initilizePassport(passport,
 	email=> users.find(fname => fname.email === email),
 	id=> users.find(fname => fname.id === id)
 );
-
-//app.use(bodyParser.json());
-//var path = require('path');
-//var db = require("./db");
-//var collection = "user";
-//app.use(session({secret: 'ssshhhhh'}));//Here ‘secret‘ is used for cookie handling etc but we have to put some secret for managing Session in Express.
-
+*/
 
 app.set('view engine','ejs');
-app.use(flash());
+/*app.use(flash());
 
 app.use(session({ 
 	secret : process.env.SESSION_SECRET,
@@ -39,15 +33,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.urlencoded({ extended:false }));
-app.use("/css",express.static('css'));
+*/app.use("/css",express.static('css'));
 app.use("/fonts",express.static('fonts'));
+app.use("/css1",express.static('css1'));
+app.use("/js1",express.static('js1'));
 app.use("/img",express.static('img'));
+app.use("/images",express.static('images'));
 app.use("/js",express.static('js'));
 app.use("/sass",express.static('sass'));
 app.use("/webfonts",express.static('webfonts'));
 
 app.get("/",function(req,res){
 	res.render("index.ejs" ,{name : 'Cogent'});
+});
+app.get("/order",function(req,res){
+	res.render("order.ejs" ,{name : 'Cogent'});
 });
 app.get("/about",function(req,res){
 	res.render("about.ejs" ,{name : 'Cogent'});
@@ -79,17 +79,17 @@ app.get("/header",function(req,res){
 app.get("/login",function(req,res){
 	res.render("login.ejs",{name : 'Cogent'});
 });
-
+/*
 app.post("/login",passport.authenticate('local',{
 	successRedirect: '/index',
 	failureRedirect: '/login',
 	failureFlash: true   //will show flash msg
 }));
-
+*/
 app.get("/signup",function(req,res){
 	res.render("signup.ejs",{name : 'Cogent'});
 });
-app.post("/signup",async (req,res)=>{
+/*app.post("/signup",async (req,res)=>{
 	try{
 		const hashedPassword = await bcrypt.hash(req.body.password,10);
 		users.push({
@@ -109,7 +109,7 @@ app.post("/signup",async (req,res)=>{
 	console.log(users);
 });
 
-app.get("/single-blog",function(req,res){
+*/app.get("/single-blog",function(req,res){
 	res.render("single-blog.ejs",{name : 'Cogent'});
 });
 app.get("/single-product",function(req,res){
