@@ -1,5 +1,13 @@
 <!doctype html>
 <html lang="zxx">
+<head>
+  <style type="text/css">
+    .size{
+      width: 20%;
+      height: 20%;
+    }
+  </style>
+</head>
 <body>
 <%- include('header'); %>
     <!-- Header part end-->
@@ -24,28 +32,32 @@
   <div class="product_image_area section_padding">
     <div class="container">
       <div class="row s_product_inner">
+        
         <div class="col-lg-5">
+
           <div class="product_slider_img">
-            <div id="vertical">
-              <div data-thumb="img/product_details/prodect_details_1.png">
-                <img src="img/product_details/prodect_details_1.png" />
-              </div>
-              <div data-thumb="img/product_details/prodect_details_2.png">
-                <img src="img/product_details/prodect_details_2.png"/>
-              </div>
-              <div data-thumb="img/product_details/prodect_details_3.png">
-                <img src="img/product_details/prodect_details_3.png" />
-              </div>
-              <div data-thumb="img/product_details/prodect_details_4.png">
-                <img src="img/product_details/prodect_details_4.png" />
-              </div>
+            
+            <div style="height: 100%;">
+              <img src="images/Orange_Gown.png" id="bigpic1">
+              <img id="bigpic" src="bigpic" style="display: none;" />                   
             </div>
+            <br>            
+            
+            <div>
+              <img src="images/Orange_Gown.png" class="size" onclick="change('orange')">&nbsp;
+              <img src="images/Purple_Gown.png" class="size" onclick="change('purple')">&nbsp;
+              <img src="images/SkyBlue_Gown.png" class="size" onclick="change('sky_blue')"> &nbsp;
+              <img src="images/Grey_Gown.png" class="size" onclick="change('grey')">    &nbsp;
+            </div>
+
           </div>
+
+
         </div>
         <div class="col-lg-5 offset-lg-1">
           <div class="s_product_text">
-            <h3>Faded SkyBlu Denim Jeans</h3>
-            <h2>$149.99</h2>
+            <h3>Wedding Gown</h3>
+            <h2>₹ 1800</h2>
             <ul class="list">
               <li>
                 <a class="active" href="#">
@@ -62,22 +74,16 @@
 
   <!-- Added colour selection -->
     <div class="product-color">
-      <span>Select Colour</span>
-      <div class="color-choose">
-        <div>
-          <input data-image="red" type="radio" id="red" name="color" value="red">
-          <label for="red"><span></span></label>
-        </div>
-        <div>
-          <input data-image="blue" type="radio" id="blue" name="color" value="blue">
-          <label for="blue"><span></span></label>
-        </div>
-        <div>
-          <input data-image="black" type="radio" id="black" name="color" value="black">
-          <label for="black"><span></span></label>
-        </div>
-      </div>
-    </div>
+      <span>Select Colour</span> <br>     
+        <img src="images/Orange_Gown.png" class="size" onclick="change('orange')">
+                        
+        <img src="images/Purple_Gown.png" class="size" onclick="change('purple')">
+          
+        <img src="images/SkyBlue_Gown.png" class="size" onclick="change('sky_blue')">
+          
+        <img src="images/Grey_Gown.png" class="size" onclick="change('grey')">
+          
+        </div>   
     <br>
 
   <!-- Added Size selection -->
@@ -115,7 +121,7 @@
 
             <div class="card_area">
               <div class="product_count d-inline-block">
-                <span class="number-decrement"> <i class="ti-minus"></i></span>
+                <span class="inumber-decrement"> <i class="ti-minus"></i></span>
                 <input class="input-number" type="text" value="1" min="0" max="10">
                 <span class="number-increment"> <i class="ti-plus"></i></span>
               </div>
@@ -129,6 +135,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -673,6 +680,33 @@
   <%- include('footer'); %>
   <!--::footer_part end::-->
 
+<script>
+
+  function change(or){
+      document.getElementById('bigpic').style.display='block';
+      document.getElementById('bigpic1').style.display='none';
+    if(or=='purple'){
+      var pic = "images/Purple_Gown.png";
+      document.getElementById('bigpic').src = pic.replace('90x90', '225x225');      
+    }  
+    else if(or=='orange'){
+      var pic = "images/Orange_Gown.png";
+      document.getElementById('bigpic').src = pic.replace('90x90', '225x225');      
+    }    
+    else if(or=='sky_blue'){
+      var pic = "images/SkyBlue_Gown.png";
+      document.getElementById('bigpic').src = pic.replace('90x90', '225x225');      
+    }
+    else{
+      var pic = "images/Grey_Gown.png";
+      document.getElementById('bigpic').src = pic.replace('90x90', '225x225');      
+    }
+    
+  }
+  
+
+  
+</script>
 </body>
 
 </html>

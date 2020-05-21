@@ -233,6 +233,24 @@
                                                                         <button class="file-upload-btn" id="file-upload-btn1" type="button" onclick="$('#file-upload-input1').trigger( 'click' );">Upload</button>
                                                                     </div>        
                                                                 </div>
+                                                                <div class="form-group">
+                                                            	<table class="table" id="item-table"> 
+                                                                        <thead>
+                                                                            <tr class="align-center">
+                                                                                <th width="9.5%">Sub Category Name</th>
+                                                                                <th width="5%"><button class="btn btn-primary w-25 add-new-cat" type="button">+</button></th>
+                                                                                
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="display-none">
+                                                                            	<td id="datastore">
+                                                                        <!-- This will contain all the data in the table in input format and is generated before add product button is clicked-->
+                                                                            	</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                            	</div>
                                                             </div> 
                                                             <br/>   
                                                             <button class="btn btn-primary" type="submit">Add Category</button>

@@ -153,3 +153,55 @@
   {
     margin:0px auto;
   }
+
+  .padding-2
+  {
+    padding:2px !important;
+  }
+
+  .display-none
+  {
+    display: none;
+  }
+
+  .fa:hover
+  {
+    cursor: pointer;
+    color:blue;
+  }
+  .add, .add-cat{
+		display: none;
+  }
+  
+  .fa
+  {
+  	z-index:1;
+  }
+  
+  .opacity-0
+  {
+  	position:absolute;
+  	margin:0px;
+  	padding:0px;
+  	opacity:0;
+  	pointer-events: none; 
+        cursor: default;     
+  }
+  
+  .pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.remove {
+  display: block;
+  background: blue;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.remove:hover {
+  background: red;
+  color: black;
+}
+		
+		
